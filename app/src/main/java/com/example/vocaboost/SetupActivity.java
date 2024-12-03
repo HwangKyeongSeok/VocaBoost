@@ -37,6 +37,7 @@ public class SetupActivity extends AppCompatActivity {
         AdvancedCheck = findViewById(R.id.AdvancedCheck);
         CustomCheck = findViewById(R.id.CustomCheck);
         CustomWordInput = findViewById(R.id.CustomWord);
+        SetupButton = findViewById(R.id.SetupButton);
 
         CustomWordInput.setEnabled(false);
         setupExclusiveCheckBoxes();
