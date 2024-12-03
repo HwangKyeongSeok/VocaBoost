@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.LinearLayout;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
+
+    private Button DateButton, TestButton, AddButton, EditButton, WordButton, MeanButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        DateButton = findViewById(R.id.DateButton);
+        TestButton = findViewById(R.id.TestButton);
+        AddButton = findViewById(R.id.AddButton);
+        EditButton = findViewById(R.id.EditButton);
+        WordButton = findViewById(R.id.WordButton);
+        MeanButton = findViewById(R.id.MeanButton);
 
         // 전달받은 단어 갯수 가져오기 (기본값: 10)
         int wordCount = getIntent().getIntExtra("WORD_COUNT", 10);
