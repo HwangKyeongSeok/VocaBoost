@@ -1,19 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="?attr/colorPrimary"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="30dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/DateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜 선택" />
+        <Button
+            android:id="@+id/TestButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="단어 시험"/>
+        <Button
+            android:id="@+id/AddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추가하기"/>
+        <Button
+            android:id="@+id/EditButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수정하기"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/Container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/gray">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="단어"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/right_bottom_border"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="뜻"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/bottom_only_border"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/WordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="단어 가리기"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/MeanButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="뜻 가리기"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>
