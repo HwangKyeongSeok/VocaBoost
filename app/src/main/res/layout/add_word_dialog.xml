@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="단어"
+            android:textSize="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/right_bottom_border"/>
+        <EditText
+            android:id="@+id/AddWordEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="단어 입력"
+            android:textSize="40dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:background="@drawable/bottom_only_border"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 뜻 "
+            android:textSize="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/right_bottom_border"/>
+        <EditText
+            android:id="@+id/AddMeanEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="뜻 입력"
+            android:textSize="40dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:background="@drawable/bottom_only_border"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="예문"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:background="@drawable/bottom_only_border"/>
+    <EditText
+        android:id="@+id/ExampleEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="예문 입력"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:background="@drawable/bottom_only_border"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/DialogWordAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입력하기"
+            android:textSize="40dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/DialogWordCancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소하기"
+            android:textSize="40dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>
