@@ -29,22 +29,30 @@
             android:id="@+id/DateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="날짜 선택" />
+            android:text="날짜 선택"
+            android:textSize="10dp"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/TestButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="단어 시험"/>
+            android:text="단어 시험"
+            android:textSize="10dp"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/AddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="추가하기"/>
+            android:text="추가하기"
+            android:textSize="10dp"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/EditButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="수정하기"/>
+            android:text="수정하기"
+            android:textSize="10dp"
+            android:layout_weight="1"/>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -71,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="뜻"
+                    android:text=" 뜻 "
                     android:textSize="20dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -94,7 +102,7 @@
             android:id="@+id/MeanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="뜻 가리기"
+            android:text=" 뜻 가리기 "
             android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

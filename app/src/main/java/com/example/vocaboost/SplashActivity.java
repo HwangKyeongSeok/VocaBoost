@@ -6,11 +6,7 @@ import android.os.Handler;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -18,42 +14,32 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // 여기서 setContentView를 사용하지 않습니다.
+        // 스플래시 화면은 테마로만 동작
 
-        setTheme(R.style.Theme_Splash);
+        // SharedPreferences에서 최초 실행 여부 확인
+        SharedPreferences prefs = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // SharedPreferences를 통해 최초 실행 여부 확인
-                SharedPreferences prefs = getSharedPreferences("AppPreferences", MODE_PRIVATE);
-                boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
+        // 5초 후 다음 화면으로 이동
+        new Handler().postDelayed(() -> {
+            Intent intent;
+            if (isFirstRun) {
+                // 최초 실행 시 SetupActivity로 이동
+                intent = new Intent(SplashActivity.this, SetupActivity.class);
 
-                Intent intent;
-                if (isFirstRun) {
-                    // 최초 실행 시 설정 화면으로 이동
-                    intent = new Intent(SplashActivity.this, SetupActivity.class);
-
-                    // 최초 실행이 아님을 기록
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("isFirstRun", false);
-                    editor.apply();
-                } else {
-                    // 일반적인 메인 화면으로 이동
-                    intent = new Intent(SplashActivity.this, MainActivity.class);
-                }
-
-                startActivity(intent);
-                // overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out); // 화면 전환 효과 추가
-                finish();
+                // 최초 실행 완료 기록
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("isFirstRun", false);
+                editor.apply();
+            } else {
+                // 일반 실행 시 MainActivity로 이동
+                intent = new Intent(SplashActivity.this, MainActivity.class);
             }
-        }, 2000); // 2초 지연
+
+            startActivity(intent);
+            finish(); // 스플래시 액티비티 종료
+        }, 1000); // 5초 대기
     }
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/white" />
+    <!-- 전체 배경 흰색 -->
+    <item android:drawable="@android:color/white" />
+
+    <!-- 중앙에 아이콘 배치 -->
     <item>
         <bitmap
             android:gravity="center"

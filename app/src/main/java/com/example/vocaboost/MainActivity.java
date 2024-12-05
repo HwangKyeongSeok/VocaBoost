@@ -1,5 +1,6 @@
 package com.example.vocaboost;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -33,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<TextView> wordCells;  // 단어 셀 리스트
     private ArrayList<TextView> meaningCells;  // 뜻 셀 리스트
 
-    // 전달받은 단어 갯수 가져오기 (기본값: 10)
-    private int wordCount = getIntent().getIntExtra("WORD_COUNT", 10);
+    int wordCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        // SharedPreferences를 통해 최초 실행 여부 확인
+        SharedPreferences prefs = getSharedPreferences("AppPreferences", MODE_PRIVATE);
+        wordCount = prefs.getInt("WordCount", 10);
         // 리스트 초기화
         wordCells = new ArrayList<>();
         meaningCells = new ArrayList<>();

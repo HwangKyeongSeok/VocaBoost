@@ -105,7 +105,7 @@ public class SetupActivity extends AppCompatActivity {
         }
 
         // 설정 완료 저장
-        SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("AppPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("isFirstRun", false); // 최초 설정 완료
         editor.putInt("WordCount", wordCount); // 단어 수 저장
