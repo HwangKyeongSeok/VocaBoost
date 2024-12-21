@@ -124,6 +124,12 @@ public class TestActivity extends AppCompatActivity {
         // 진행 상태 업데이트
         progressBar.setProgress(currentQuestionIndex + 1);
         progressText.setText((currentQuestionIndex + 1) + "/" + wordData.size());
+
+        // 입력 칸의 너비를 정답 길이에 비례해 설정
+        int baseWidthPerChar = 40; // 문자당 폭(픽셀) 증가
+        int extraSpace = 100;      // 여유 공간 추가
+        int inputWidth = (word.length() * baseWidthPerChar) + extraSpace;
+        inputWord.setWidth(inputWidth);
     }
 
     private void checkAnswer(String userInput) {
