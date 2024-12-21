@@ -40,6 +40,6 @@ public class SplashActivity extends AppCompatActivity {
 
             startActivity(intent);
             finish(); // 스플래시 액티비티 종료
-        }, 1000); // 5초 대기
+        }, 1000); // 1초 대기
     }
 }
