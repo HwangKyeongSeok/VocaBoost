@@ -29,8 +29,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<WordItem> wordList;
-    private Button DateButton, TestButton, AddButton, EditButton, WordButton, MeanButton;
+    private Button DateButton, TestButton, AddButton, WordButton, MeanButton;
     private DatabaseHelper dbHelper;
     private String todayDate;
     private ArrayList<TextView> wordCells;  // 단어 셀 리스트
@@ -59,15 +58,13 @@ public class MainActivity extends AppCompatActivity {
         DateButton = findViewById(R.id.DateButton);
         TestButton = findViewById(R.id.TestButton);
         AddButton = findViewById(R.id.AddButton);
-        //EditButton = findViewById(R.id.EditButton);
-        //WordButton = findViewById(R.id.WordButton);
-        //MeanButton = findViewById(R.id.MeanButton);
+        WordButton = findViewById(R.id.WordButton);
+        MeanButton = findViewById(R.id.MeanButton);
 
         // 오늘 날짜 설정
         todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
         // 단어 데이터 초기화
-        wordList = new ArrayList<>(wordCount);
 
         dbHelper = new DatabaseHelper(this);
 
@@ -134,6 +131,32 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         addWordCellClickListeners();
+
+        WordButton.setOnClickListener(v->
+                toggleVisibility(wordCells, meaningCells, WordButton, MeanButton));
+        MeanButton.setOnClickListener(v ->
+                toggleVisibility(meaningCells, wordCells, MeanButton, WordButton));
+    }
+
+    // 셀의 가시성을 토글하는 메서드
+    private void toggleVisibility(ArrayList<TextView> targetCells, ArrayList<TextView> otherCells, Button currentButton, Button otherButton) {
+        boolean isCurrentlyHidden = targetCells.get(0).getVisibility() == View.INVISIBLE;
+
+        // 현재 버튼 상태 토글
+        for (TextView cell : targetCells) {
+            cell.setVisibility(isCurrentlyHidden ? View.VISIBLE : View.INVISIBLE);
+        }
+
+        // 다른 버튼이 활성 상태라면 해당 셀 초기화
+        if (otherButton.isSelected()) {
+            for (TextView cell : otherCells) {
+                cell.setVisibility(View.VISIBLE);
+            }
+            otherButton.setSelected(false); // 다른 버튼 비활성화
+        }
+
+        // 현재 버튼 선택 상태 업데이트
+        currentButton.setSelected(!isCurrentlyHidden);
     }
 
     // 데이터베이스에서 단어 로드
