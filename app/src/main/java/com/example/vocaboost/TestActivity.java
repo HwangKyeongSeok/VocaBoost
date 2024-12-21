@@ -149,7 +149,10 @@ public class TestActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("시험 결과");
         builder.setMessage("총 문제: " + wordData.size() + "\n맞춘 문제: " + (wordData.size() - incorrectCount) + "\n틀린 문제: " + incorrectCount);
-        builder.setPositiveButton("확인", (dialog, which) -> finish());
+        builder.setPositiveButton("확인", (dialog, which) -> {
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
         builder.setCancelable(false);
         builder.show();
     }

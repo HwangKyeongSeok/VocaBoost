@@ -23,7 +23,6 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -129,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, TestActivity.class);
             intent.putExtra("todayDate", todayDate);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
         addWordCellClickListeners();
 
@@ -301,9 +301,16 @@ public class MainActivity extends AppCompatActivity {
     public void onDateSelected(int year, int month, int day) {
         month++; // Calendar.MONTH는 0부터 시작
         todayDate = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month, day);
+        Cursor cursor = dbHelper.getWordsByDate(todayDate);
 
-        // 선택한 날짜에 맞는 단어 로드
-        loadWordsFromDatabase();
+        if (cursor != null && cursor.moveToFirst()) {
+            // 선택한 날짜에 맞는 단어 로드
+            loadWordsFromDatabase();
+        }
+        else{
+            todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            Toast.makeText(this, "단어가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
